@@ -58,7 +58,9 @@ export default function Experience() {
               position={[0, 1.56, -1.4]}
               rotation-x={-0.256}
             >
-              <button>start game</button>
+              <a href="/level">
+                <button>start game</button>
+              </a>
               {/* <iframe src="https://bieke-portfolio-n3ql.onrender.com/" /> */}
             </Html>
           </primitive>
