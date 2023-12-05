@@ -111,9 +111,7 @@ export default function Level() {
           <Block scale={[0.5, 1.4, 0.5]} position={[-0.2, 0.5, -19]} />
         </RigidBody>
 
-        <RigidBody type="fixed">
-          <BlockEnd position={[0, 10, -7]} />
-        </RigidBody>
+        <BlockEnd position={[0, 10, -7]} />
 
         <Player />
       </Physics>
