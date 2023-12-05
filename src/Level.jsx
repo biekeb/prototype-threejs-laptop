@@ -39,6 +39,12 @@ function Block({ position = [0, 0, 0], scale = [4, 0.2, 4] }) {
 
 export function BlockEnd({ position = [0, 0, 0], onWin }) {
   const [isAsleep, setIsAsleep] = useState(false);
+  const [isWin, setIsWin] = useState(false);
+
+  const handleWin = () => {
+    setIsWin(true);
+    onWin(); // Call onWin function if needed
+  };
 
   return (
     <group position={position}>
@@ -61,6 +67,7 @@ export function BlockEnd({ position = [0, 0, 0], onWin }) {
               other.rigidBodyObject.name
             );
             console.log("you win");
+            window.alert("you win");
           }
         }}
       >
