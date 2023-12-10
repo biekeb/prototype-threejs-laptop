@@ -37,37 +37,34 @@ function Block({ position = [0, 0, 0], scale = [4, 0.2, 4] }) {
   );
 }
 
-export function BlockEnd({ position = [0, 0, 0], onWin }) {
+export function BlockEnd({ position = [0, 0, 0] }) {
   const [isAsleep, setIsAsleep] = useState(false);
   const [isWin, setIsWin] = useState(false);
 
   const handleWin = () => {
     setIsWin(true);
-    onWin(); // Call onWin function if needed
+    console.log("you win");
+    window.alert("you win");
   };
 
   return (
     <group position={position}>
       <RigidBody
         colliders="hull"
+        name="test"
         onSleep={() => setIsAsleep(true)}
         onWake={() => setIsAsleep(false)}
-        onCollisionEnter={({ manifold, target, other }) => {
+        onCollisionEnter={({ target, other }) => {
           console.log(
-            "Collision at world position ",
-            manifold.solverContactPoint(0)
+            `${target.rigidBodyObject.name} collided with ${other.rigidBodyObject.name}`
           );
 
-          if (other.rigidBodyObject) {
-            console.log(
-              // this rigid body's Object3D
-              target.rigidBodyObject.name,
-              " collided with ",
-              // the other rigid body's Object3D
-              other.rigidBodyObject.name
-            );
-            console.log("you win");
-            window.alert("you win");
+          if (
+            other.rigidBodyObject &&
+            other.rigidBodyObject.name === "Player"
+          ) {
+            console.log("Player collided with BlockEnd");
+            handleWin();
           }
         }}
       >
@@ -93,11 +90,7 @@ export default function Level() {
     >
       <Perf position="top-left" />
       {/* <color attach="background" args={["#171720"]} /> */}
-      {/* 
-      <Environment
-        files="https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/2k/evening_road_01_2k.hdr"
-        ground={{ height: 5, radius: 40, scale: 20 }}
-      /> */}
+
       <Sky />
 
       <directionalLight castShadow position={[1, 2, 3]} intensity={4.5} />
@@ -116,9 +109,11 @@ export default function Level() {
           <Block scale={[0.5, 1, 0.5]} position={[-0.2, 0.5, -17]} />
           <Block scale={[0.5, 1.2, 0.5]} position={[0.2, 0.5, -18]} />
           <Block scale={[0.5, 1.4, 0.5]} position={[-0.2, 0.5, -19]} />
+
+          <BlockStart position={[0, 0, -21]} />
         </RigidBody>
 
-        <BlockEnd position={[0, 10, -7]} />
+        <BlockEnd position={[0, 10, -22]} />
 
         <Player />
       </Physics>

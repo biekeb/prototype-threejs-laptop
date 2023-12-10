@@ -130,6 +130,7 @@ export default function Player() {
       ref={body}
       canSleep={false}
       colliders="ball"
+      name="Player"
       restitution={0.2}
       friction={1}
       linearDamping={0.5}
