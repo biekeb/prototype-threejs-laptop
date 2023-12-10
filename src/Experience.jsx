@@ -35,7 +35,7 @@ export default function Experience() {
             rotation-y={-1.25}
             maxWidth={2}
           >
-            BIEKE BELLOT
+            LETS PLAY
           </Text>
           <rectAreaLight
             width={2.5}
@@ -59,7 +59,29 @@ export default function Experience() {
               rotation-x={-0.256}
             >
               <a href="/level">
-                <button>start game</button>
+                <button
+                  style={{
+                    position: "absolute",
+                    top: "50%",
+                    left: "50%",
+                    transform: "translate(-50%, -50%)",
+                    width: "300px",
+                    height: "300px",
+                    fontSize: "20px",
+                    backgroundColor: "darkred",
+                    color: "white",
+                    borderRadius: "50%",
+                    border: "none",
+                    cursor: "pointer",
+                    outline: "none",
+                    boxShadow: "0px 0px 20px 0px rgba(0,0,0,0.75)",
+                    transition: "all 0.3s ease",
+                    zIndex: "1",
+                    fontSize: "30pt",
+                  }}
+                >
+                  start game
+                </button>
               </a>
               {/* <iframe src="https://bieke-portfolio-n3ql.onrender.com/" /> */}
             </Html>
