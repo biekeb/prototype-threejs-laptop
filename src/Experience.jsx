@@ -67,7 +67,6 @@ export default function Experience() {
                     transform: "translate(-50%, -50%)",
                     width: "300px",
                     height: "300px",
-                    fontSize: "20px",
                     backgroundColor: "darkred",
                     color: "white",
                     borderRadius: "50%",
